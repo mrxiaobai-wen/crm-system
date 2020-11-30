@@ -164,7 +164,7 @@
               <unsignedTypes>false</unsignedTypes>
               <!--<excludes></excludes>-->
               <!--数据库名称-->
-              <inputSchema>testdb</inputSchema>
+              <inputSchema>crm-member</inputSchema>
             </database>
 
             <generate>
