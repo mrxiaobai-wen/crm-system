@@ -9,9 +9,9 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.crm</groupId>
-  <artifactId>goods</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>goods</name>
+  <artifactId>crm-goods</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>crm-goods</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
@@ -29,6 +29,44 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- mysql数据库 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.21</version>
+    </dependency>
+    <!-- 连接池 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.9</version>
+    </dependency>
+    <!-- jooq引入 -->
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq</artifactId>
+      <version>3.13.5</version>
+    </dependency>
+    <!-- jooq代码生成 -->
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq-meta</artifactId>
+      <version>3.13.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq-codegen</artifactId>
+      <version>3.13.5</version>
+    </dependency>
+    <!-- lombok引入 -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.12</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -36,6 +74,75 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>3.13.5</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.21</version>
+          </dependency>
+        </dependencies>
+
+        <configuration>
+          <jdbc>
+            <driver>com.mysql.jdbc.Driver</driver>
+            <url>jdbc:mysql://localhost:3306?serverTimezone=UTC</url>
+            <username>root</username>
+            <password>123456</password>
+          </jdbc>
+
+          <generator>
+            <name>org.jooq.codegen.JavaGenerator</name>
+            <database>
+              <name>org.jooq.meta.mysql.MySQLDatabase</name>
+              <!--include和exclude用于控制为数据库中哪些表生成代码-->
+              <includes>.*</includes>
+              <unsignedTypes>false</unsignedTypes>
+              <!--<excludes></excludes>-->
+              <!--数据库名称-->
+              <inputSchema>crm-goods</inputSchema>
+            </database>
+
+            <generate>
+              <!--生成dao和pojo-->
+              <daos>false</daos>
+              <pojos>false</pojos>
+              <!--把数据库时间类型映射到java 8时间类型-->
+              <javaTimeTypes>true</javaTimeTypes>
+              <!--<interfaces>true</interfaces>-->
+              <!--不在生成的代码中添加spring注释，比如@Repository-->
+              <springAnnotations>false</springAnnotations>
+            </generate>
+
+            <target>
+              <!--生成代码文件的包名及放置目录-->
+              <packageName>com.crm.goods.db</packageName>
+              <directory>src/main/java</directory>
+            </target>
+
+          </generator>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>
