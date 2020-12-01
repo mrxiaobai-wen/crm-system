@@ -26,6 +26,6 @@
 
 1、基础环境搭建：springboot+jooq+lombok+mysql
 
-提交会员服务
+提交会员服务、商品服务；
 
 提交订单服务

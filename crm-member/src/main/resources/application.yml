@@ -12,3 +12,8 @@ spring:
     max-wait: 60000
     pool-prepared-statements: true
     max-pool-prepared-statement-per-connection-size: 20
+
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
