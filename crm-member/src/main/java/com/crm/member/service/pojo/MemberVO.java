@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class MemberVO {
 
     private Integer id;
+    private String memberCode;
     private String name;
     private String mobile;
     private String remark;

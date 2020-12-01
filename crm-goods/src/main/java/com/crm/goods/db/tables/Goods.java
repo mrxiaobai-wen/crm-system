@@ -18,7 +18,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row8;
+import org.jooq.Row9;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Goods extends TableImpl<GoodsRecord> {
 
-    private static final long serialVersionUID = -1123967661;
+    private static final long serialVersionUID = 1497449762;
 
     /**
      * The reference instance of <code>crm-goods.goods</code>
@@ -53,6 +53,11 @@ public class Goods extends TableImpl<GoodsRecord> {
      * The column <code>crm-goods.goods.id</code>.
      */
     public final TableField<GoodsRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+
+    /**
+     * The column <code>crm-goods.goods.goods_no</code>. 商品编码
+     */
+    public final TableField<GoodsRecord, String> GOODS_NO = createField(DSL.name("goods_no"), org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "商品编码");
 
     /**
      * The column <code>crm-goods.goods.name</code>. 商品名
@@ -169,11 +174,11 @@ public class Goods extends TableImpl<GoodsRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row8 type methods
+    // Row9 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<Integer, String, String, BigDecimal, Integer, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row8) super.fieldsRow();
+    public Row9<Integer, String, String, String, BigDecimal, Integer, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row9) super.fieldsRow();
     }
 }

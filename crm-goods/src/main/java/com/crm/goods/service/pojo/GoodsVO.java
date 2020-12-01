@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 public class GoodsVO {
 
     private Integer id;
+    private String goodsNo;
     private String name;
     private BigDecimal amount;
     private Integer stock;

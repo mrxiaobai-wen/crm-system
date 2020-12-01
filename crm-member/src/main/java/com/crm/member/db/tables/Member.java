@@ -17,7 +17,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row6;
+import org.jooq.Row7;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -33,7 +33,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Member extends TableImpl<MemberRecord> {
 
-    private static final long serialVersionUID = 646807504;
+    private static final long serialVersionUID = -2124089865;
 
     /**
      * The reference instance of <code>crm-member.member</code>
@@ -52,6 +52,11 @@ public class Member extends TableImpl<MemberRecord> {
      * The column <code>crm-member.member.id</code>.
      */
     public final TableField<MemberRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+
+    /**
+     * The column <code>crm-member.member.member_code</code>. 会员编号
+     */
+    public final TableField<MemberRecord, String> MEMBER_CODE = createField(DSL.name("member_code"), org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "会员编号");
 
     /**
      * The column <code>crm-member.member.name</code>. 会员名
@@ -158,11 +163,11 @@ public class Member extends TableImpl<MemberRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row6 type methods
+    // Row7 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<Integer, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row6) super.fieldsRow();
+    public Row7<Integer, String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row7) super.fieldsRow();
     }
 }
