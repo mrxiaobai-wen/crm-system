@@ -120,6 +120,32 @@
       <version>2.3.5.RELEASE</version>
     </dependency>
 
+    <!-- 引入sentinel限流组件 -->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-core</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+    <!-- sentinel注解支持 -->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-annotation-aspectj</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+    <!-- sentinel客户端与控制台通信组件 -->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-transport-simple-http</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+
+    <!-- httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.5</version>
+    </dependency>
+
     <!-- 其它 -->
 
   </dependencies>
